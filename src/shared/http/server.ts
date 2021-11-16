@@ -1,8 +1,10 @@
+import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import routes from './routes';
 import AppError from './errors/AppError';
-
+import '@shared/typeorm';
+import dotenv from 'dotenv';
 const app = express();
 
 app.use(cors());
@@ -26,6 +28,7 @@ app.use(
   },
 );
 
+dotenv.config();
 app.listen(3333, () => {
   console.log('Server started on port 3333!');
 });
