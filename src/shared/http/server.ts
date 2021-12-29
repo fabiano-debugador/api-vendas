@@ -7,10 +7,12 @@ import routes from './routes';
 import AppError from './errors/AppError';
 import '@shared/typeorm';
 import dotenv from 'dotenv';
+import uploadConfig from '@config/upload';
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/files', express.static(uploadConfig.directory));
 
 app.use(routes);
 
