@@ -10,11 +10,14 @@ import AppError from './errors/AppError';
 import '@shared/typeorm';
 import dotenv from 'dotenv';
 import uploadConfig from '@config/upload';
+import rateLimiter from '@shared/http/middlewares/rateLimiter';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(rateLimiter);
 
 app.use(pagination);
 
